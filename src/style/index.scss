@@ -1,0 +1,19 @@
+// layout //
+$sidebar-width: 250px;
+
+#root, #main {
+  height: 100%;
+}
+#root {
+  padding-left: $sidebar-width;
+}
+#sidebar {
+  position: fixed;
+  height: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: $sidebar-width;
+  background: #1C1F1F;
+  overflow-x: hidden;
+}

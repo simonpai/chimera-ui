@@ -1,4 +1,6 @@
+const pathAPI = require('path');
 const webpack = require('webpack');
+const DefinePlugin = webpack.DefinePlugin;
 
 const GLOBALS = {};
 
@@ -8,12 +10,12 @@ module.exports = {
 
   target: 'web',
   output: {
-    path: __dirname + '/out',
+    path: pathAPI.join(__dirname, 'out/js'),
     filename: 'index.js',
-    publicPath: '/js'
+    publicPath: '/js/'
   },
   plugins: [
-    new webpack.DefinePlugin(GLOBALS)
+    new DefinePlugin(GLOBALS),
   ],
   module: {
     rules: [
@@ -23,11 +25,5 @@ module.exports = {
         exclude: /\/node_modules\//
       }
     ]
-  },
-  devServer: {
-    stats: 'minimal',
-    host: '0.0.0.0',
-    port: 9999,
-    disableHostCheck: true
   }
 };

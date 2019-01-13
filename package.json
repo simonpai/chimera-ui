@@ -1,6 +1,22 @@
 {
   "name": "chimera-ui",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonpai/chimera-ui.git"
+  },
+  "author": "simonpai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonpai/chimera-ui/issues"
+  },
+  "homepage": "https://github.com/simonpai/chimera-ui#readme",
+  "scripts": {
+    "start": "npm run watch & node ./server.js",
+    "compile-css": "node-sass src/style --output out/css --recursive",
+    "watch-css": "npm run compile-css; node-sass src/style --output out/css --recursive --watch",
+    "watch": "npm run watch-css"
+  },
   "dependencies": {
     "@material-ui/core": "^3.8.3",
     "connected-react-router": "^6.1.0",
@@ -20,21 +36,11 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "eslint": "^5.11.1",
+    "eslint-plugin-react": "^7.12.3",
+    "express": "^4.16.4",
+    "node-sass": "^4.11.0",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --mode development"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/simonpai/chimera-ui.git"
-  },
-  "author": "simonpai",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/simonpai/chimera-ui/issues"
-  },
-  "homepage": "https://github.com/simonpai/chimera-ui#readme"
+    "webpack-dev-middleware": "^3.5.0"
+  }
 }
