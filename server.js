@@ -9,11 +9,12 @@ const compiler = webpack(config);
 const app = express();
 
 app.use('/css', express.static(__dirname + '/out/css'));
-app.get('/', (req,res) => res.sendFile(__dirname + '/src/index.html'));
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
 }));
+
+app.get('*', (req, res) => res.sendFile(__dirname + '/src/index.html'));
 
 app.listen(9999, function () {
   console.log('Listening on port 9999.\n');
