@@ -13,6 +13,26 @@
   transform: translateY(-50%);
 }
 
+// component //
+.expression {
+  display: inline-flex;
+  align-items: center;
+
+  > * {
+    height: 0%;
+    margin: 0 0.25em !important;
+
+    &.icon {
+      vertical-align: middle;
+      width: 1.5em;
+      margin: 0 0.5em;
+    }
+  }
+}
+.icon {
+  width: 1em;
+}
+
 // layout //
 $sidebar-width: 250px;
 
@@ -25,13 +45,33 @@ $sidebar-width: 250px;
 #sidebar {
   position: fixed;
   height: 100%;
+  overflow-x: hidden;
   top: 0px;
   bottom: 0px;
   left: 0px;
   width: $sidebar-width;
+  padding: 0.42857142em;
   background: #1C1F1F;
-  overflow-x: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+
+  &, a {
+    color: #999;
+  }
+  a.active {
+    color: #F0F0F0;
+  }
+  .list .list {
+    padding: 0;
+    margin-left: 1.42857142em;
+  }
+  .item, .dir {
+    padding: .14285714em 0 !important;
+  }
+  .icon {
+    width: 1.14285714em;
+    vertical-align: top;
+    margin-right: 0.28571428em;
+  }
 }
 #body {
   @include checkerboard(50px, rgba(0, 0, 0, 0.05));
@@ -41,20 +81,4 @@ $sidebar-width: 250px;
     @include douchebag-vertical-align;
     text-align: center;
   }
-}
-
-.expression {
-  display: inline-flex;
-  align-items: center;
-
-  > * {
-    height: 0%;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-}
-.ch-icon {
-  vertical-align: middle;
-  width: 1.5em;
-  margin: 0 0.5em;
 }

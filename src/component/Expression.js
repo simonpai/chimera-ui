@@ -3,16 +3,18 @@ import React from 'react';
 import Icon from './Icon';
 import { mdiPlus, mdiEqual } from '@mdi/js';
 
+import { asArray } from '../util/objects';
+
 function process(node, i) {
   switch(typeof node) {
     case 'string':
       switch (node.trim()) {
         case '+':
-          return <Icon key={i} path={mdiPlus} />;
+          return <Icon key={i} path={mdiPlus} color="#667" />;
         case '=':
-          return <Icon key={i} path={mdiEqual} />;
+          return <Icon key={i} path={mdiEqual} color="#667" />;
       }
-      return {key: i, ...node};
+      return node;
     default:
       return {key: i, ...node};
   }
@@ -22,12 +24,12 @@ export default function Expression({children, ...props}) {
   return (
     <div className="expression" {...props}>
       {
-        children.map(process)
+        asArray(children).map(process)
       }
     </div>
   );
 }
 
 Expression.propTypes = {
-  children: PropTypes.array
+  children: PropTypes.any
 };

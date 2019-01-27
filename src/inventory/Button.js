@@ -1,5 +1,5 @@
 import React from 'react';
-import Expression from '../component/Expression';
+import Expression from 'component/Expression';
 
 import { Button as SuiButton } from 'semantic-ui-react';
 import MuiButton from '@material-ui/core/Button';

@@ -25,5 +25,10 @@ module.exports = {
         exclude: /\/node_modules\//
       }
     ]
+  },
+  resolve: {
+    alias: {
+      component: pathAPI.resolve(__dirname, 'src/component/')
+    }
   }
 };

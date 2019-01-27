@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Expression from '../component/Expression';
+import Expression from 'component/Expression';
 
 import { Menu as SuiMenu } from 'semantic-ui-react';
 import MuiButton from '@material-ui/core/Button';
