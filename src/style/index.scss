@@ -18,14 +18,32 @@
   display: inline-flex;
   align-items: center;
 
+  &.vertical {
+    flex-direction: column;
+
+    > .icon {
+      transform: rotate(90deg);
+    }
+  }
+  &.horizontal {
+    flex-direction: row;
+
+    > * {
+      height: 0%;
+
+      &.icon {
+        vertical-align: middle;
+      }
+    }
+  }
+
   > * {
     height: 0%;
-    margin: 0 0.25em !important;
+    margin: 0.5em !important;
 
     &.icon {
-      vertical-align: middle;
       width: 1.5em;
-      margin: 0 0.5em;
+      // margin: 0.5em;
     }
   }
 }

@@ -20,9 +20,10 @@ function process(node, i) {
   }
 }
 
-export default function Expression({children, ...props}) {
+export default function Expression({children, vertical = false, ...props}) {
+  const className = 'expression ' + (vertical ? 'vertical' : 'horizontal');
   return (
-    <div className="expression" {...props}>
+    <div className={className} {...props}>
       {
         asArray(children).map(process)
       }
@@ -31,5 +32,6 @@ export default function Expression({children, ...props}) {
 }
 
 Expression.propTypes = {
+  vertical: PropTypes.bool,
   children: PropTypes.any
 };
