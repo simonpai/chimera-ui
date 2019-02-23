@@ -20,8 +20,9 @@ function buildTree(paths) {
     const segs = path.split('/');
     const seglen = segs.length;
 
-    for (let i = 0, seg, forked, n; i < seglen && (seg = segs[i]); i++) {
+    for (let i = 0, seg, forked = false, n; i < seglen && (seg = segs[i]); i++) {
       if (!forked && i < len && seg === nodes[i].name) {
+        n = nodes[i];
         continue;
       }
       forked = true;

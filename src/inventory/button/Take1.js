@@ -1,5 +1,6 @@
 import React from 'react';
 import Expression from 'component/Expression';
+import Console from 'component/Console';
 
 import { Button as SuiButton, Label } from 'semantic-ui-react';
 import MuiButton from '@material-ui/core/Button';
@@ -15,9 +16,10 @@ const MUI = {
 
 export default function Section() {
   const [count, plusOne] = useCount();
-  
+
   return (
     <React.Fragment>
+      <Console />
       <Expression>
 
         <SUI.Button color="teal" onClick={plusOne}>
@@ -30,10 +32,23 @@ export default function Section() {
           MUI
         </MUI.Button>
 
+        +
+
+        <style disabled>{`
+          .my-button {
+            padding: 0 !important;
+          }
+          .my-button * {
+            color: white !important;
+          }
+        `}</style>
+
         =
 
-        <SUI.Button as={MUI.Button} color="teal" onClick={plusOne}>
-          SUI + MUI
+        <SUI.Button color="teal" onClick={plusOne} className="my-button">
+          <MUI.Button>
+            SUI + MUI
+          </MUI.Button>
         </SUI.Button>
 
       </Expression>

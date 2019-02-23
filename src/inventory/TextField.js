@@ -13,7 +13,7 @@ const MUI = {
 
 export default function Section() {
   return (
-    <Expression className="text-field">
+    <Expression>
 
       <SUI.Form>
         <SUI.Form.Field>
@@ -28,8 +28,8 @@ export default function Section() {
 
       +
 
-      <style>{`
-        .expression.text-field .mui label {
+      <style disabled>{`
+        .expression .mui label {
           z-index: 1;
           pointer-events: none;
         }

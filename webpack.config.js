@@ -28,6 +28,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      util: pathAPI.resolve(__dirname, 'src/util/'),
       component: pathAPI.resolve(__dirname, 'src/component/')
     }
   }

@@ -3,47 +3,40 @@ import React from 'react';
 import Icon from './Icon';
 import { mdiPlus, mdiEqual } from '@mdi/js';
 
-import { asArray } from '../util/objects';
+import { asArray } from 'util/objects';
+import { useToggle } from  'util/hooks';
 
-function process(node, i) {
-  const e = addKey(_process(node), i);
-  return e;
-}
+const ICON_PATHS = {
+  '+': mdiPlus,
+  '=': mdiEqual
+};
 
-function _process(node) {
+function reducer(acc, node, index) {
+  const key = `n-${index}`;
   switch(typeof node) {
     case 'string':
-      switch (node.trim()) {
-        case '+':
-          return <Icon path={mdiPlus} color="#667" />;
-        case '=':
-          return <Icon path={mdiEqual} color="#667" />;
+      node = node.trim();
+      var path = ICON_PATHS[node];
+      if (path) {
+        acc.push(<Icon key={key} path={path} color="#667" />);
+      } else {
+        acc.push(node);
       }
-      return node;
+      break;
     default:
       switch (node.type) {
         case 'style':
-          return (
-            <React.Fragment>
-              {
-                node
-              }
-              <span className="code">{'{'}CSS{'}'}</span>
-            </React.Fragment>
-          );
+          var [enabled, setToggle] = useToggle(!node.props.disabled);
+          if (enabled) {
+            acc.splice(1, 0, {...node, key: `${key}-0`});
+          }
+          acc.push(<span key={key} className={`code ${enabled ? 'enabled' : 'disabled'}`} onClick={setToggle}>{'{'}CSS{'}'}</span>);
+          break;
         default:
-          return node;
+          acc.push(node);
       }
   }
-}
-
-function addKey(node, i) {
-  switch(typeof node) {
-    case 'object':
-      return {...node, key: i};
-    default:
-      return node;
-  }
+  return acc;
 }
 
 export default function Expression({children, vertical = false, className, ...props}) {
@@ -51,7 +44,7 @@ export default function Expression({children, vertical = false, className, ...pr
   return (
     <div className={mergedClassName} {...props}>
       {
-        asArray(children).map(process)
+        asArray(children).reduce(reducer, [])
       }
     </div>
   );

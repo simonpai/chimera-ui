@@ -15,7 +15,7 @@ const MUI = {
 
 export default function Section() {
   const [count, plusOne] = useCount();
-  
+
   return (
     <React.Fragment>
       <Expression>
@@ -30,11 +30,21 @@ export default function Section() {
           MUI
         </MUI.Button>
 
+        +
+
+        <style disabled>{`
+          .my-button {
+            padding: 0 !important;
+          }
+        `}</style>
+
         =
 
-        <SUI.Button as={MUI.Button} color="teal" onClick={plusOne}>
-          SUI + MUI
-        </SUI.Button>
+        <MUI.Button onClick={plusOne} className="my-button">
+          <SUI.Button color="teal">
+            SUI + MUI
+          </SUI.Button>
+        </MUI.Button>
 
       </Expression>
 
